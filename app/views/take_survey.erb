@@ -1,1 +1,18 @@
-Take this survey!
+<div class="take_survey">
+  <h1> <%= @survey.title %></h1>
+  
+  <form action="/survey/submit" method="POST">
+    <input type="hidden" name="survey" value="<%= @survey.id %>">
+    <ol>
+      <% @survey.questions.each do |question|  %>
+  
+          <li><%= question.title %><br>
+              <textarea name="response[<%= question.id %>]" cols='50' rows='10' value="enter response here"></textarea><p><br></p>
+          </li>
+      <% end %>
+    </ol> 
+  
+  <input type="submit" value="Submit">
+  </form>
+
+</div>
