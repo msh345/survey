@@ -51,8 +51,8 @@ post '/survey/submit' do
   @response = params[:response]
   @survey_submission = SurveySubmission.create(survey_id: @survey_id, user_id: current_user.id)
 
-  @response.each do |response|
-    p response
+  @response.each do |response| #["100", "do"]
+    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
   end 
 
   if current_user
