@@ -1,0 +1,25 @@
+<h1>Survey Gorilla</h1>
+
+<p></p>
+<h3>Login</h3>
+<%= @error_login if @error_login %>
+<p></p>
+<form action="/login" method="POST">
+  <label for="username">username:</label>
+  <input type="text" name="user[username]" placeholder="username here"><br>
+  <label for="password">password:</label>
+  <input type="password" name="user[password]" placeholder="password here"><br>
+  <input type="submit" value="login">
+</form>
+<p></p>
+<h3>Sign Up</h3>
+<%= @error_signup if @error_signup %>
+<p></p>
+<form action="/signup" method="POST">
+  <label for="username">username:</label>
+  <input type="text" name="user[username]" placeholder="username here"><br>
+  <label for="password">password:</label>
+  <input type="password" name="user[password]" placeholder="password here"><br>
+  <input type="submit" value="create account">
+</form>
+
