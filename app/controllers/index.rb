@@ -6,9 +6,13 @@ get '/' do
   erb :index
 end
 
-get '/user/:id' do 
-  @user = User.find(params[:id])
-  erb :user
+get '/user/profile' do 
+  @user = current_user
+  if @user
+    erb :profile
+  else
+    redirect '/'
+  end
 end
 
 get '/logout' do
@@ -26,12 +30,11 @@ post '/login' do
 
   if user
     session[:user_id] = user.id
-    redirect to '/'
+    redirect to '/user/profile'
   else
-    @error_login = "username and password do not match"
-    erb :login
+    @error_login = "username or password incorrect"
+    erb :index 
   end
-
 end
 
 post '/signup' do
@@ -40,10 +43,10 @@ post '/signup' do
 
   if @error_signup.any?
     @error_signup = @error_signup.join(", ")
-    erb :login
+    erb :index
   else
     session[:user_id] = user.id
-    redirect to '/'
+    redirect to '/user/profile'
   end
 
 end
