@@ -17,7 +17,23 @@
 
   <title></title>
 </head>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+  <% if current_user %>
+    <li><a href="/user/<%= current_user.id %>">My Profile</a></li>
+    <li><a href="/logout">Logout</a></li>
+  <% else %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Signup</a></li>
+  <% end %>
+  </ul>
+</nav>
+
 <body>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
