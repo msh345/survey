@@ -17,6 +17,10 @@ get '/survey/results/:hash' do
   end  
 end 
 
+get '/survey/take/success' do 
+  erb :anonymous_success_page
+end 
+
 get '/survey/take/:hash' do 
   @survey = Survey.find_by_url(params[:hash])
   if @survey
@@ -26,9 +30,6 @@ get '/survey/take/:hash' do
   end 
 end 
 
-get '/survey/take/success' do 
-  erb :anonymous_success_page
-end 
 
 
 #=======POST ========
