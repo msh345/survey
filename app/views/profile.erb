@@ -1,0 +1,33 @@
+<h1>Profile page for <%= @user.username %> </h1>
+<h2>Surveys Created</h2>
+<% @surveys = current_user.surveys %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>URL</th>
+  <tr>
+<% @surveys.each do |survey| %>
+  </tr>
+    <td><%= survey.id %></td>
+    <td><%= survey.title %></td>
+    <td><a href="/survey/results/<%= survey.id %>">http://localhost:9393/<%= survey.url %></a></td>
+  </tr>
+<% end %>
+</table>
+ 
+<h2>Surveys Taken</h2>
+ <% @survey_submissions = current_user.survey_submissions %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+  <tr>
+<% @survey_submissions.each do |survey_submission| %>
+  </tr>
+    <td><%= survey_submission.id %></td>
+    <td><%= survey_submission.survey.title %></td>
+  </tr>
+<% end %>
+</table>

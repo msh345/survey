@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
     @password ||= Password.new(password_digest)
   end
 
-  def self.authenticate(username, password)
-    user = User.find_by_username(username)
-    return user if user && (user.password == password)
+  def self.authenticate(args)
+    user = User.find_by_username(args[:username])
+    return user if user && (user.password == args[:password])
     nil
   end
 
