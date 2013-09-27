@@ -6,6 +6,11 @@ end
 	Survey.create(title: Faker::Lorem.words(num = 3, supplemental = false))
 end
 
+900.times do
+	SurveySubmissions.create()
+end
+
+
 600.times do
 	Question.create(survey_id: rand(1..100) ,question: => Faker::Lorem.sentence(word_count = 4, supplemental = false, random_words_to_add = 6))
 end
