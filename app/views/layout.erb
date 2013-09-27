@@ -20,9 +20,8 @@
 
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
   <% if current_user %>
-    <li><a href="/user/<%= current_user.id %>">My Profile</a></li>
+    <li><a href="/user/profile">My Profile</a></li>
     <li><a href="/logout">Logout</a></li>
   <% end %>
   </ul>

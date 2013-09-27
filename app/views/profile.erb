@@ -1,4 +1,7 @@
 <h1>Profile page for <%= @user.username %> </h1>
+
+<h2><a href="/survey/create">Create a new survey</a></h2>
+
 <h2>Surveys Created</h2>
 <% @surveys = current_user.surveys %>
 <table>
@@ -31,3 +34,4 @@
   </tr>
 <% end %>
 </table>
+
