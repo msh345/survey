@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   validates_presence_of :password, :username
   validates_uniqueness_of :username
+  has_many :survey_submissions
+  has_many :question_responses, through: :survey_submissions
+  has_many :surveys
+  # has_many :questions, through: :surveys
 
   include BCrypt
 
