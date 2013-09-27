@@ -1,0 +1,3 @@
+class QuestionResponse < ActiveRecord::Base
+  # Remember to create a migration!
+end
