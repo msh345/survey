@@ -23,11 +23,11 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
-#=======PHOTO SUPPORT
-require 'carrierwave'
-require 'carrierwave/orm/activerecord'
-require 'mini_magick'
-#====================
+# #=======PHOTO SUPPORT
+# require 'carrierwave'
+# require 'carrierwave/orm/activerecord'
+# require 'mini_magick'
+# #====================
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -38,12 +38,12 @@ APP_NAME = APP_ROOT.basename.to_s
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
-#========CARRIERWAVE!===========
-Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
-CarrierWave.configure do |config|
-    config.root = APP_ROOT + 'public/'
-end
-#===============================
+# #========CARRIERWAVE!===========
+# Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
+# CarrierWave.configure do |config|
+#     config.root = APP_ROOT + 'public/'
+# end
+# #===============================
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
