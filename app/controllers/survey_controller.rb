@@ -13,7 +13,7 @@ get '/survey/results/:hash' do
   if @survey
     erb :survey_results 
   else 
-    # failure message - 404 error code page 
+    erb :survey_not_found
   end  
 end 
 
@@ -22,7 +22,7 @@ get '/survey/take/:hash' do
   if @survey
     erb :take_survey
   else 
-    # failure message - 4040 error code page 
+    erb :survey_not_found
   end 
 end 
 
