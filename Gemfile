@@ -20,6 +20,10 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'faker'
+##=====PHOTO SUPPORT
+gem 'carrierwave'
+gem 'mini_magick'
+##==================
 
 group :test do
   gem 'faker'
