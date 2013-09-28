@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('#add_question').on('submit', function(event){
+    event.preventDefault();
+    var question = $('#question').find("input[name='question[]']").last()
+    $(question).after('<br> <label for="question">Question</label> <input type="text" name="question[]">')
+  })
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 });
+
