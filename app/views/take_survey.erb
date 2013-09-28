@@ -8,7 +8,7 @@
           <% if question.question_type == "multiple choice"%>
             <li><%= question.title %><br>
               <% question.choices.each do |choice| %>
-              <input type="radio" name="<%= question.id %>" value="<%= choice.title %>"> <%= choice.title %><br>
+              <input type="radio" name="response[<%= question.id %>]" value="<%= choice.id %>"> <%= choice.title %><br>
               <% end %>
             </li>
 

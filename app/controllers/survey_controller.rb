@@ -51,13 +51,32 @@ end
 
 post '/survey/submit' do
   #take answers and save to db 
-  p params
   @survey_id = params[:survey]
   @response = params[:response]
   @survey_submission = SurveySubmission.create(survey_id: @survey_id, user_id: current_user.id)
+  p "the survey submission id we created was #{@survey_submission.id}"
+
+  # @response.each do |response| #["100", "do"]
+  #   puts "response: #{response.inspect}"
+  #   if Question.find(response[0]).question_type == "text area"
+  #     QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
+  #     # p QuestionResponse
+  #   elsif Question.find(response[0]).question_type == "multiple choice"
+  #     QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], choice_id: response[1])
+  #   end 
+  # end 
 
   @response.each do |response| #["100", "do"]
-    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
+    @survey_submission.question_responses << QuestionResponse.new
+    # resp = QuestionResponse.create(survey_submission_id: @survey_submission.id)
+    resp.question = Question.find(question_id: response[0])
+    if resp.question.question_type == "text area"
+      resp.answer = response[1]
+      # p QuestionResponse
+    elsif resp.question.question_type == "multiple choice"
+      resp.choice = choice.find(response[1])
+    end 
+    resp.save
   end 
 
   if current_user
