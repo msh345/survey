@@ -2,8 +2,11 @@ enable :sessions
 ######################GET###############
 
 get '/' do
-  # Look in app/views/index.erb
-  erb :index
+  if current_user
+    redirect '/user/profile'
+  else
+    erb :index
+  end
 end
 
 get '/user/profile' do 
