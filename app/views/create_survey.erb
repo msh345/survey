@@ -1,8 +1,12 @@
 <h1>Create a New Survey</h1>
 
   <form id="question" action="/survey/create" method='POST'>
+    <label for="survey_title">Survey Title</label>
+    <input type="text" name="survey_title">
     <label for="question">Question</label>
     <input type="text" name="question[]"><br>
+    <label for="answer">Answer</label>
+    <input type="text" name="question[][answer]"><br>
     <div class="empty_div"></div>
     <input type="submit" value="Submit" >
   </form>
