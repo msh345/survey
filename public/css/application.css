@@ -1,8 +1,8 @@
-html {
-  /*background: url('/images/dots_02.jpg') 20%;*/
-
+/*html {
+  background: url('/images/dots_02.jpg') 20%;
+  color: white;
 }
-
+*/
 @font-face {
 font-family: Cubano;
 src: url('/webfonts/cubano-regular-webfont.ttf'),

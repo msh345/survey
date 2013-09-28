@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <!-- 
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -18,14 +19,23 @@
   <title></title>
 </head>
 
-<nav>
-  <ul>
-  <% if current_user %>
-    <li><a href="/user/profile">My Profile</a></li>
-    <li><a href="/logout">Logout</a></li>
-  <% end %>
-  </ul>
-</nav>
+  <span class="navbar">
+    <h1><a href='/'>Survey Hippo</h1></a>
+
+  <div class="header_links">
+
+    <nav>
+      <ul>
+      <% if current_user %>
+        <li><a href="/user/profile">My Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% end %>
+      </ul>
+    </nav>
+    </span>
+  </div>
+  </div>
+
 
 <body>
   <div class="container">
