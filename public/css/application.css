@@ -31,5 +31,9 @@ th {
 }
 
 .question {
-  margin: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.submit-survey {
+  margin: 10px 0 10px 0;
 }
