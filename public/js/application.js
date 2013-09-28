@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   $('#add_question').on('submit', function(event){
     event.preventDefault();
     var question = $('#question').find("input[name='question[]']").last()

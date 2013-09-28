@@ -1,15 +1,34 @@
 <h1>Create a New Survey</h1>
 
   <form id="question" action="/survey/create" method='POST'>
-    <label for="survey_title">Survey Title</label>
-    <input type="text" name="survey_title">
-    <label for="question">Question</label>
-    <input type="text" name="question[]"><br>
-    <label for="answer">Answer</label>
-    <input type="text" name="question[][question_type]"><br>
+    
+    <div class="form-element header">
+      <label for="survey_title">Survey Title</label>
+      <input type="text" name="survey_title">
+    </div>
+    
+    <div id="question_sandbox">
+    </div>
+
+
+      <input id="btn_short_question" type="button" value="Add Short Question">
+      <span> or </span>
+      <input id="btn_mult_question" type="button" value="Add M.C. Question">
+
     <div class="empty_div"></div>
     <input type="submit" value="Submit" >
   </form>
-<form id="add_question" action="">
-  <input type="submit" value="Add Question">
-</form>
+
+<div class="question-type-template" style="display: none;">
+  <label for="question">Question</label> <input type="text" name="question[]">
+</div>
+<div class="question-multiple-template" style="display: none;">
+  <label for="question">Question</label> <input type="text" name="question[]">
+</div>
+
+
+
+    <!-- <div class="form-element">
+      <label for="question">Question Type</label>
+      <input type="text" name="question[]">
+    </div> -->

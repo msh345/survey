@@ -21,3 +21,11 @@ th {
   text-align: left;
 }
 
+/* Create Survey */
+.form-element {
+  margin: 5px;
+}
+
+.form-element.header {
+  margin: 5px 5px 15px 5px;
+}
