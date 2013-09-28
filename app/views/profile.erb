@@ -3,7 +3,6 @@
 <h2><a href="/survey/create">Create a new survey</a></h2>
 
 <h2>Surveys Created</h2>
-<% @surveys = current_user.surveys %>
 <table>
   <tr>
     <th>ID</th>
@@ -20,16 +19,17 @@
 </table>
  
 <h2>Surveys Taken</h2>
- <% @survey_submissions = current_user.survey_submissions %>
 
 <table>
   <tr>
-    <th>ID</th>
+    <th>Survey ID</th>
+    <th>Survey Submission ID</th>
     <th>Title</th>
   <tr>
 <% @survey_submissions.each do |survey_submission| %>
   </tr>
     <td><%= survey_submission.survey_id %></td>
+    <td><%= survey_submission.id %></td>
     <td><%= survey_submission.survey.title %></td>
   </tr>
 <% end %>
