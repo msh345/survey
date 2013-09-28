@@ -7,7 +7,7 @@
       <input type="text" name="survey_title">
     </div>
     
-    <div id="question_sandbox">
+    <div id="question-sandbox">
     </div>
 
 
@@ -15,17 +15,21 @@
       <span> or </span>
       <input id="btn_mult_question" type="button" value="Add M.C. Question">
 
-    <div class="empty_div"></div>
+
     <input type="submit" value="Submit" >
+  
   </form>
 
-<div class="question-type-template" style="display: none;">
-  <label for="question">Question</label> <input type="text" name="question[]">
+<div style="display: none;">
+  <div class="question-short-template" >
+    <label for="question">Question</label> 
+    <input type="text" name="question[]">
+  </div>
+  <div class="question-multiple-template">
+    <label for="question">Question</label> 
+    <input type="text" name="question[]">
+  </div>
 </div>
-<div class="question-multiple-template" style="display: none;">
-  <label for="question">Question</label> <input type="text" name="question[]">
-</div>
-
 
 
     <!-- <div class="form-element">

@@ -1,23 +1,40 @@
 $(document).ready(function() {
 
-  $('#add_question').on('submit', function(event){
+  var shortAnswerTemplate = $('.question-short-template');
+
+  var multipleChoiceTemplate = $('.question-multiple-template');
+
+  var questionSandbox = $('#question-sandbox');
+
+  var submitQuestions = function(event) {
     event.preventDefault();
-    var question = $('#question').find("input[name='question[]']").last()
-    $(question).after('<br> <label for="question">Question</label> <input type="text" name="question[]">')
-})
+  };
+
   var addMultipleChoiceQuestion = function() {
-    console.log("MCQuestion");
-  };
+    questionSandbox.append(multipleChoiceTemplate.clone());
+  }; //we're using clone here to try to append the same element over again
+  //http://stackoverflow.com/questions/4114655/jquery-append-only-working-first-time
 
-  var addShortAnswerQuestion = function() {
-    console.log("SAQuestion");  
-  };
-  //bind to add short question button
-  var shortAnswerButton = $('#btn_short_question');
-  shortAnswerButton.on("click", addShortAnswerQuestion);
+  var addShortAnswerQuestion = function() { 
+    questionSandbox.append(shortAnswerTemplate.clone());
+  }; //we're using clone here to try to append the same element over again
+  //http://stackoverflow.com/questions/4114655/jquery-append-only-working-first-time
 
-  var multipleChoiceButton = $('#btn_mult_question');
-  multipleChoiceButton.on("click", addMultipleChoiceQuestion);
+  var bindButtons = function()
+  {
+    $('#question').submit(submitQuestions);
+
+    //bind to add short question button
+    var shortAnswerButton = $('#btn_short_question');
+    shortAnswerButton.on("click", addShortAnswerQuestion);
+
+    var multipleChoiceButton = $('#btn_mult_question');
+    multipleChoiceButton.on("click", addMultipleChoiceQuestion);
+  }
+
+  bindButtons(); //calling bindButtons
 
 });
 
+    // var question = $('#question').find("input[name='question[]']").last()
+    // $(question).after('<br> <label for="question">Question</label> <input type="text" name="question[]">')
