@@ -35,10 +35,14 @@ end
 #=======POST ========
 
 post '/survey/create' do
-  #create instance to add to db
   @survey = Survey.new() #params
-  if @survey.save 
-    redirect '/user/:id'     # obtain session info for url or not? 
+  questions = params[:question]
+  questions.each do |question|
+    Survey Question.create
+  end
+  
+  if @survey.save
+    redirect "/user/profile"     # obtain session info for url or not? 
   else 
     # display red error message 
   end 
@@ -47,7 +51,7 @@ end
 post '/survey/submit' do
   #take answers and save to db 
   if current_user
-    redirect '/user/:id'
+    redirect "/user/:id"
   else 
     redirect '/survey/take/success' 
   end 
