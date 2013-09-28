@@ -11,6 +11,8 @@ end
 
 get '/user/profile' do 
   @user = current_user
+  @surveys = @user.surveys
+  @survey_submissions = @user.survey_submissions.order("survey_id")
   if @user
     erb :profile
   else
