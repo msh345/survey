@@ -11,7 +11,7 @@ end
 get '/survey/results/:hash' do
   @survey = Survey.find_by_url(params[:hash])
   @questions = @survey.questions
-  @question_responses = @survey.survey_submissions
+  # @question_responses = @survey.survey_submissions
   if @survey
     erb :survey_results 
   else 
