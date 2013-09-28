@@ -24,10 +24,7 @@ get '/survey/take/success' do
 end 
 
 get '/survey/take/:hash' do 
-    @survey = Survey.find_by_url(params[:hash])
-    @survey_submissions = @survey.survey_submissions << SurveySubmission.create(age: 11, gender: "female")
-    @survey.questions.each do |question|
-    end
+  @survey = Survey.find_by_url(params[:hash])
   if @survey
     erb :take_survey
   else 
