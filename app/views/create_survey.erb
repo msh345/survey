@@ -20,15 +20,31 @@
   
   </form>
 
-<div style="display: none;">
-  <div class="question-short-template" >
-    <label for="question">Question</label> 
-    <input type="text" name="question[]">
+  <div style="display: none;">
+    <div class="question-short-template question" >
+      <label for="question">Question</label> 
+      <input type="text" name="question[]">
   </div>
-  <div class="question-multiple-template">
-    <label for="question">Question</label> 
-    <input type="text" name="question[]">
+
+
+  <div class="question-multiple-template question">
+    <div>
+      <label for="question">M.C. Question Title</label> 
+      <input type="text" name="question[]">
+    </div>
+    <div>  
+      <label for="question">M.C. Question Answer1</label> 
+      <input type="text" name="question[]">
+    </div>
+    <div>  
+      <label for="question">M.C. Question Answer2</label> 
+      <input type="text" name="question[]">
+    </div>
+      <input type="button" value="Add Choice"/>
   </div>
+
+<!--   user should be able to add radio buttons with corresponding possible responses..
+  and submit all radio buttons as one new question -->
 </div>
 
 

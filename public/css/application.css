@@ -29,3 +29,7 @@ th {
 .form-element.header {
   margin: 5px 5px 15px 5px;
 }
+
+.question {
+  margin: 10px;
+}
