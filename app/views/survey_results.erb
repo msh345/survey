@@ -8,12 +8,11 @@
     <% end %>
   </tr>
     <% @survey_submissions.each do |survey_submission| %>
-      <tr>  
-          <td><%= survey_submission.id %></td>
-          <td>asdf </td>
-          <td>asdf</td>
-          <td>asdf</td>
+      <tr>
+        <td><%= survey_submission.id %></td>
+        <% survey_submission.question_responses.each do |question_response| %>
+        <td><%= question_response.answer %></td>            
+        <% end %>
       </tr>
-
     <% end %>
 </table>
