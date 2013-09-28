@@ -4,8 +4,13 @@
   <form action="/survey/submit" method="POST">
     <input type="hidden" name="survey" value="<%= @survey.id %>">
     <ol>
-      <% @survey.questions.each do |question|  %>
-  
+      <% if question.question_type == "multiple choice"%>
+        <% @survey.questions.each do |question| %>
+
+          <% end %>
+
+
+          <% else question.question_type == "text area" %>
           <li><%= question.title %><br>
               <textarea name="response[<%= question.id %>]" cols='50' rows='10' value="enter response here"></textarea><p><br></p>
           </li>
