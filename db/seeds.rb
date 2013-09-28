@@ -21,19 +21,22 @@ end
 end
 
 
-#Question Responses
 
-# SurveySubmission.first.questions.each do |question|
-#   question.question_response.create(answer:,)
-# end
 
-# 600.times do
-# 	Survey.all.questions[i]
 
-# 	Question.all.each do |question|
-# 		question.questionresponses.create()
-# 	# QuestionResponses.create(survey_submission_id: rand(1..900), question_id: rand(1..600))
-# end
+  #Question Responses
+
+  # SurveySubmission.first.questions.each do |question|
+  #   question.question_response.create(answer:,)
+  # end
+
+  # 600.times do
+  # 	Survey.all.questions[i]
+
+  # 	Question.all.each do |question|
+  # 		question.questionresponses.create()
+  # 	# QuestionResponses.create(survey_submission_id: rand(1..900), question_id: rand(1..600))
+  # end
 
 # user = User.last
 # new_survey = user.surveys << Survey.create(title: "MY NEW SURVEY")

@@ -1,0 +1,19 @@
+<h1>Results for "<%= @survey.title %>"</h1>
+
+<table border="1">
+  <tr>
+    <th>Submission ID</th>
+    <% @questions.each do |question| %>
+      <th>"<%= question.title %>"</th>
+    <% end %>
+  </tr>
+    <% @survey_submissions.each do |survey_submission| %>
+      <tr>  
+          <td><%= survey_submission.id %></td>
+          <td><%= survey_submission %></td>
+          <td>asdf</td>
+          <td>asdf</td>
+      </tr>
+
+    <% end %>
+</table>

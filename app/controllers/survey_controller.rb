@@ -10,6 +10,8 @@ end
 
 get '/survey/results/:hash' do
   @survey = Survey.find_by_url(params[:hash])
+  @questions = @survey.questions
+  @question_responses = @survey.survey_submissions
   if @survey
     erb :survey_results 
   else 
@@ -35,17 +37,16 @@ end
 #=======POST ========
 
 post '/survey/create' do
-  @survey = Survey.new() #params
+  random_string = (0...8).map { (65 + rand(26)).chr }.join
+
+  surveys = current_user.surveys << Survey.create(title: params[:survey_title], url: random_string)
+  survey = Survey.last
   questions = params[:question]
   questions.each do |question|
-    Survey Question.create
+    survey.questions << Question.create(title: question)
   end
   
-  if @survey.save
-    redirect "/user/profile"     # obtain session info for url or not? 
-  else 
-    # display red error message 
-  end 
+  redirect "/user/profile"     # obtain session info for url or not?  
 end 
 
 post '/survey/submit' do
