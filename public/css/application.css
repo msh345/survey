@@ -1,7 +1,7 @@
-/*html {
-  background: url('/images/dots_02.jpg') 20%;
-  color: white;
-}*/
+html {
+  /*background: url('/images/dots_02.jpg') 20%;*/
+  background-color: teal;
+}
 
 .header_links {
   display: inline;
@@ -13,7 +13,7 @@
   height: 100px;
   position: relative;
   float: left;
-  padding-right: 20px;
+  padding-right:20px;
 }
 
 li {
@@ -30,7 +30,7 @@ src: url('/webfonts/cubano-regular-webfont.ttf'),
 
 .container {
   font-family: Cubano;
-  
+  border-radius: 10%;
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
