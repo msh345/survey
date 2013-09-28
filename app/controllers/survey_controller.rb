@@ -10,8 +10,6 @@ end
 
 get '/survey/results/:hash' do
   @survey = Survey.find_by_url(params[:hash])
-  @questions = @survey.questions
-  @survey_submissions = @survey.survey_submissions
   if @survey
     erb :survey_results 
   else 
@@ -37,46 +35,28 @@ end
 #=======POST ========
 
 post '/survey/create' do
-  random_string = (0...8).map { (65 + rand(26)).chr }.join
-
-  surveys = current_user.surveys << Survey.create(title: params[:survey_title], url: random_string)
-  survey = Survey.last
+  @survey = Survey.new() #params
   questions = params[:question]
   questions.each do |question|
-    survey.questions << Question.create(title: question)
+    Survey Question.create
   end
   
-  redirect "/user/profile"     # obtain session info for url or not?  
+  if @survey.save
+    redirect "/user/profile"     # obtain session info for url or not? 
+  else 
+    # display red error message 
+  end 
 end 
 
 post '/survey/submit' do
   #take answers and save to db 
+  p params
   @survey_id = params[:survey]
   @response = params[:response]
   @survey_submission = SurveySubmission.create(survey_id: @survey_id, user_id: current_user.id)
-  p "the survey submission id we created was #{@survey_submission.id}"
-
-  # @response.each do |response| #["100", "do"]
-  #   puts "response: #{response.inspect}"
-  #   if Question.find(response[0]).question_type == "text area"
-  #     QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
-  #     # p QuestionResponse
-  #   elsif Question.find(response[0]).question_type == "multiple choice"
-  #     QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], choice_id: response[1])
-  #   end 
-  # end 
 
   @response.each do |response| #["100", "do"]
-    @survey_submission.question_responses << QuestionResponse.new
-    # resp = QuestionResponse.create(survey_submission_id: @survey_submission.id)
-    resp.question = Question.find(question_id: response[0])
-    if resp.question.question_type == "text area"
-      resp.answer = response[1]
-      # p QuestionResponse
-    elsif resp.question.question_type == "multiple choice"
-      resp.choice = choice.find(response[1])
-    end 
-    resp.save
+    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
   end 
 
   if current_user
