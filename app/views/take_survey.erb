@@ -4,11 +4,21 @@
   <form action="/survey/submit" method="POST">
     <input type="hidden" name="survey" value="<%= @survey.id %>">
     <ol>
-      <% @survey.questions.each do |question|  %>
+      <% @survey.questions.each do |question| %>
+          <% if question.question_type == "multiple choice"%>
+            <li><%= question.title %><br>
+              <% question.choices.each do |choice| %>
+              <input type="radio" name="<%= question.id %>" value="<%= choice.title %>"> <%= choice.title %><br>
+              <% end %>
+            </li>
+
   
-          <li><%= question.title %><br>
+
+          <% else question.question_type == "text area" %>
+            <li><%= question.title %><br>
               <textarea name="response[<%= question.id %>]" cols='50' rows='10' value="enter response here"></textarea><p><br></p>
-          </li>
+            </li>
+          <% end %>
       <% end %>
     </ol> 
   
