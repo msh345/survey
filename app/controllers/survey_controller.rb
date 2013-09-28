@@ -52,7 +52,7 @@ end
 post '/survey/submit' do
   #take answers and save to db 
   p params
-  @survey_id = params[:survey]
+  @survey = Survey.find(params[:survey])
   @response = params[:response]
   @survey_submission = SurveySubmission.create(survey_id: @survey_id, user_id: current_user.id)
 
