@@ -1,5 +1,9 @@
 <h1>Results for "<%= @survey.title %>"</h1>
 
+<% if @survey_submissions.empty? %>
+<p>No one has taken your survey yet</p>
+<p>Maybe you want to send them the link?</p>
+<% else %>
 <table border="1">
   <tr>
     <th>Submission ID</th>
@@ -11,8 +15,10 @@
       <tr>
         <td><%= survey_submission.id %></td>
         <% survey_submission.question_responses.each do |question_response| %>
-        <td><%= question_response.answer %></td>            
+        <td><%= question_response.answer %></td>
         <% end %>
       </tr>
     <% end %>
 </table>
+
+<% end %>

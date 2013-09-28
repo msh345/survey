@@ -2,14 +2,11 @@
 
   <form id="question" action="/survey/create" method='POST'>
     <label for="survey_title">Survey Title</label>
-    <input type="text" name="survey_title">
+    <input type="text" name="survey_title"><br>
     <label for="question">Question</label>
     <input type="text" name="question[]"><br>
-    <label for="answer">Answer</label>
-    <input type="text" name="question[][question_type]"><br>
-    <div class="empty_div"></div>
     <input type="submit" value="Submit" >
-  </form>
+  </form><br>
 <form id="add_question" action="">
   <input type="submit" value="Add Question">
 </form>
