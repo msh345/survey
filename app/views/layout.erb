@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <!-- 
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -11,6 +12,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/animation.css"
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -18,14 +20,27 @@
   <title></title>
 </head>
 
-<nav>
-  <ul>
-  <% if current_user %>
-    <li><a href="/user/profile">My Profile</a></li>
-    <li><a href="/logout">Logout</a></li>
-  <% end %>
-  </ul>
-</nav>
+
+
+
+
+
+  <div class="header_links">
+
+    <img class="hippo" src="/images/Cartoon_hippo.svg"></img>
+    <h1 class="page_header"><a href='/'>Survey Hippo</h1></a>
+    <nav>
+      <ul>
+      <% if current_user %>
+        <li><a href="/user/profile">My Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% end %>
+      </ul>
+    </nav>
+    </span>
+  </div>
+  </div>
+
 
 <body>
   <div class="container">

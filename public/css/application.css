@@ -1,5 +1,25 @@
 html {
   /*background: url('/images/dots_02.jpg') 20%;*/
+  background-color: teal;
+  font-family: Cubano;
+}
+
+.header_links {
+  display: inline;
+  text-decoration: none;
+  background: black;
+}
+
+.hippo {
+  height: 100px;
+  position: relative;
+  float: left;
+  padding-right:20px;
+}
+
+li {
+  display: inline;
+  text-decoration: none;
 
 }
 
@@ -11,7 +31,7 @@ src: url('/webfonts/cubano-regular-webfont.ttf'),
 
 .container {
   font-family: Cubano;
-  
+  border-radius: 10%;
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
