@@ -11,9 +11,7 @@
               <input type="radio" name="<%= question.id %>" value="<%= choice.title %>"> <%= choice.title %><br>
               <% end %>
             </li>
-
-  
-
+            
           <% else question.question_type == "text area" %>
             <li><%= question.title %><br>
               <textarea name="response[<%= question.id %>]" cols='50' rows='10' value="enter response here"></textarea><p><br></p>
