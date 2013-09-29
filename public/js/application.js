@@ -10,6 +10,10 @@ $(document).ready(function() {
 
   var submitQuestions = function(event) {
     event.preventDefault();
+    var data = $('form').serialize()
+    $.post('/survey/create',data, function(response){
+      $('html').html(response);
+    });
   };
 
   var addMultipleChoiceQuestion = function() {
