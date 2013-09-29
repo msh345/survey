@@ -62,8 +62,6 @@ post '/survey/create' do
 end 
 
 post '/survey/submit' do
-  #take answers and save to db 
-  p params
   @survey = Survey.find(params[:survey])
   @responses = params[:response]
   if current_user
