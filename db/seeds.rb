@@ -23,19 +23,3 @@ SurveySubmission.where("user_id > ?", 50).each do |s|
   s.user_id = nil
   s.save
 end
-
-  #Finish results page
-  #To do results page, need QuestionResponse table seeded
-  #Modify the Create_Survey page to include multiple choice/text dropdown menu
-  #Modify the 
-
-
-# user = User.last
-# new_survey = user.surveys << Survey.create(title: "MY NEW SURVEY")
-# new_survey.last.questions << [Question.create(title: "How are you?"), Question.create(title: "What's new?)]
-# SurveySubmission.create(gender: "male",age: 33)
-# submit = _
-# Survey.last.update_attributes(url: "xyz")
-# Survey.find_by_url("xyz").id
-# submit.update_attributes(survey_id: Survey.find_by_url("xyz").id)
-# Survey.find_by_url("xyz").questions

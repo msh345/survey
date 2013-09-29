@@ -51,18 +51,21 @@ end
 
 post '/survey/submit' do
   #take answers and save to db 
-  p params
-  @survey_id = params[:survey]
-  @response = params[:response]
-  @survey_submission = SurveySubmission.create(survey_id: @survey_id, user_id: current_user.id)
+  @survey = Survey.find(params[:survey])
+  @responses = params[:response]
+  if current_user
+    @survey_submission = SurveySubmission.create(survey_id: @survey.id, user_id: current_user.id)
+  else
+    @survey_submission = SurveySubmission.create(survey_id: @survey.id)
+  end
 
-  @response.each do |response| #["100", "do"]
-    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: response[0], answer: response[1])
+  @responses.each do |question,response| #["100", "do"]
+    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, answer: response)
   end 
 
   if current_user
     redirect '/user/profile'
-  else 
+  else
     redirect '/survey/take/success' 
   end 
 end 
