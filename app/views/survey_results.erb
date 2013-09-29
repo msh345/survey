@@ -4,10 +4,18 @@
 <p>No one has taken your survey yet</p>
 <p>Maybe you want to send them the <a href="/survey/take/<%= @survey.url %>">link</a>?</p>
 <% else %>
+
+<% mc_questions,text_questions = [],[] %>
+<% @questions.each do |question| %>
+  <% mc_questions << question if question.question_type == "multichoice" %>
+  <% text_questions << question if question.question_type == "text" %>
+<% end %>
+
+<h2>Answers Requiring Text Input</h2>
 <table border="1">
   <tr>
     <th>Submission ID</th>
-    <% @questions.each do |question| %>
+    <% text_questions.each do |question| %>
       <th>"<%= question.title %>"</th>
     <% end %>
   </tr>
@@ -19,6 +27,19 @@
         <% end %>
       </tr>
     <% end %>
+</table><br>
+<h2>Multiple Choice Answers</h2>
+<table border="1">
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 
 <% end %>
