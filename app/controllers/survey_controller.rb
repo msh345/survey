@@ -37,13 +37,25 @@ end
 #=======POST ========
 
 post '/survey/create' do
+
   random_string = (0...8).map { (65 + rand(26)).chr }.join
 
   surveys = current_user.surveys << Survey.create(title: params[:survey_title], url: random_string)
   survey = Survey.last
   questions = params[:question]
+  mc_questions = Hash[*params[:mc_question].flatten]
+
   questions.each do |question|
-    survey.questions << Question.create(title: question)
+    survey.questions << Question.create(title: question, question_type: "text")
+  end
+
+  mc_questions.each do |question,answers|
+    mc_answers = mc_questions["#{question}"][:answer]
+    mc_answers.each do |answer|
+      survey_questions = survey.questions << Question.create(title: question, question_type: "multichoice")
+      last_question = survey_questions.last
+      last_question.choices << Choice.create(title: answer)
+    end
   end
   
   redirect "/user/profile"     # obtain session info for url or not?  
@@ -69,5 +81,3 @@ post '/survey/submit' do
     redirect '/survey/take/success' 
   end 
 end 
-
-
