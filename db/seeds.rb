@@ -26,7 +26,15 @@ end
   survey_submissions = Survey.find(rand(1..150)).survey_submissions << SurveySubmission.create(user_id: rand(1..150), gender: ["male","female"].sample, age: rand(18..65))
   survey = Survey.find(survey_submissions.last.survey_id)
   survey.questions.each do |question|
-    QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, answer: Faker::Lorem.words(num = 3, supplemental = false).join(" "))
+    if question.question_type == "text"
+      QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, answer: Faker::Lorem.words(num = 3, supplemental = false).join(" "))
+    else
+      choices = []
+      Question.find(question.id).choices.each do |choice|
+        choices << choice
+      end
+      QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, answer: choices.sample)
+    end
   end
 end
 
