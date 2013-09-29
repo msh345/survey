@@ -62,7 +62,6 @@ post '/survey/create' do
 end 
 
 post '/survey/submit' do
-  #take answers and save to db 
   @survey = Survey.find(params[:survey])
   @responses = params[:response]
   if current_user
@@ -72,7 +71,12 @@ post '/survey/submit' do
   end
 
   @responses.each do |question,response| #["100", "do"]
-    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, answer: response)
+    q = Question.find(question)
+    if q.question_type == "text"
+      QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, answer: response)
+    elsif q.question_type == "multichoice"
+      QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, choice_id: response)
+    end
   end 
 
   if current_user
