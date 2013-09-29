@@ -51,9 +51,9 @@ post '/survey/create' do
 
   mc_questions.each do |question,answers|
     mc_answers = mc_questions["#{question}"][:answer]
+    survey_questions = survey.questions << Question.create(title: question, question_type: "multichoice")
+    last_question = survey_questions.last
     mc_answers.each do |answer|
-      survey_questions = survey.questions << Question.create(title: question, question_type: "multichoice")
-      last_question = survey_questions.last
       last_question.choices << Choice.create(title: answer)
     end
   end
