@@ -1,16 +1,16 @@
 /*  Animations
 -------------------------------*/
 
-.hippo {
-  -webkit-animation: rock-duck 8s ease-in-out infinite;
+.hippo_success {
+  -webkit-animation: rock-hippo 8s ease-in-out infinite;
 }
 
 
 
 
-/*  Keyframes
--------------------------------*/ 
+  Keyframes
+------------------------------- 
 
-@-webkit-keyframes rock-duck {
+@-webkit-keyframes rock-hippo {
   50% {-webkit-transform: rotate(100deg) translateY(100px) translateX(100px); }
 }

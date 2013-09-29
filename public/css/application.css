@@ -17,6 +17,20 @@ html {
   padding-right:20px;
 }
 
+.hippo_success img {
+  display: block;
+  margin: auto;
+  width: 400px;
+/*  image: center;*/
+}
+
+.hippo_failure img {
+  vertical-align: middle;
+  display: block
+  margin 0 auto;
+  width: 400px;
+}
+
 li {
   display: inline;
   text-decoration: none;
@@ -33,7 +47,7 @@ src: url('/webfonts/cubano-regular-webfont.ttf'),
   font-family: Cubano;
   border-radius: 10%;
   margin: 20px auto;
-  width: 600px;
+  width: 750px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
