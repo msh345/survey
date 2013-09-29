@@ -8,7 +8,18 @@ end
 end
 
 450.times do
-  Survey.find(rand(1..150)).questions << Question.create(title: Faker::Lorem.sentence(word_count = 4, supplemental = false, random_words_to_add = 6))
+  Survey.find(rand(1..150)).questions << Question.create(title: Faker::Lorem.sentence(word_count = 4, supplemental = false, random_words_to_add = 6), question_type: ["text","multichoice"].sample)
+end
+
+1.upto(150) do |i|
+  Survey.find(i).questions.each do |question|
+    if question.question_type == "multichoice"
+      choices = [Faker::Lorem.words(num = 3, supplemental = false).join(" "),Faker::Lorem.words(num = 3, supplemental = false).join(" "),Faker::Lorem.words(num = 3, supplemental = false).join(" "),Faker::Lorem.words(num = 3, supplemental = false).join(" ")].sample(rand(2..4))
+      choices.each do |choice|
+        Choice.create(title: choice, question_id: question.id)
+      end
+    end
+  end
 end
 
 1000.times do
