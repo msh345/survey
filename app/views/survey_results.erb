@@ -2,7 +2,7 @@
 
 <% if @survey_submissions.empty? %>
 <p>No one has taken your survey yet</p>
-<p>Maybe you want to send them the link?</p>
+<p>Maybe you want to send them the <a href="/survey/take/<%= @survey.url %>">link</a>?</p>
 <% else %>
 <table border="1">
   <tr>
