@@ -25,6 +25,10 @@ get '/logout' do
   redirect to '/'
 end
 
+get '/dance' do
+  erb :dance
+end
+
 
 
 ######################POST###############

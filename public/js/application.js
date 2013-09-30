@@ -1,5 +1,23 @@
 $(document).ready(function() {
 
+  $('.hippo').click(function(){
+    $(this).effect('bounce', {times:3}, 500);
+    })
+
+  // $('.hippo_success').click(function() {
+  //     $(this).animate({
+  //       height: '-=100px'});
+
+  // $('.hippo_success').click(function() {
+  //   $(this).effect('explode');
+  //   $('.not_found_header').append('<p>I\'m sorry, take me <a href="/">Home!</a></p>')
+  // })
+
+  $('.hippo_failure').click(function() {
+    $(this).effect('explode');
+    $('.not_found_header').append('<p>I\'m sorry, take me <a href="/">Home!</a></p>')
+  })
+
   var shortAnswerTemplate = $('.question-short-template');
 
   var multipleChoiceTemplate = $('.question-multiple-template');
@@ -61,3 +79,4 @@ $(document).ready(function() {
 
     // var question = $('#question').find("input[name='question[]']").last()
     // $(question).after('<br> <label for="question">Question</label> <input type="text" name="question[]">')
+
