@@ -5,25 +5,23 @@
 <p>Maybe you want to send them the <a href="/survey/take/<%= @survey.url %>">link</a>?</p>
 <% else %>
 
-<% mc_questions,text_questions = [],[] %>
-<% @questions.each do |question| %>
-  <% mc_questions << question if question.question_type == "multichoice" %>
-  <% text_questions << question if question.question_type == "text" %>
-<% end %>
-
 <h2>Answers Requiring Text Input</h2>
 <table border="1">
   <tr>
     <th>Submission ID</th>
-    <% text_questions.each do |question| %>
-      <th>"<%= question.title %>"</th>
+    <% @questions.each do |question| %>
+      <th>"<%= question.title%>"</th>
     <% end %>
   </tr>
     <% @survey_submissions.each do |survey_submission| %>
       <tr>
         <td><%= survey_submission.id %></td>
         <% survey_submission.question_responses.each do |question_response| %>
-        <td><%= question_response.answer %></td>
+          <% if question_response.answer %>
+          <td><%= question_response.answer %></td>
+            <% else %>
+            <td><%= question_response.choice.title %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

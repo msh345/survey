@@ -12,6 +12,14 @@ get '/survey/results/:hash' do
   @survey = Survey.find_by_url(params[:hash])
   @questions = @survey.questions
   @survey_submissions = @survey.survey_submissions
+  
+  @mc_questions,@text_questions = [],[]
+  
+  @questions.each do |question|
+    @mc_questions << question if question.question_type == "multichoice"
+    @text_questions << question if question.question_type == "text"
+  end
+
   if @survey
     erb :survey_results 
   else 
