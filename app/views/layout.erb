@@ -33,7 +33,7 @@
     <nav>
       <ul>
       <% if current_user %>
-        <li><a href="/user/profile">My Profile</a></li>
+        <li><a href="/user/profile">My Profile</a> | </li>
         <li><a href="/logout">Logout</a></li>
       <% end %>
       </ul>
@@ -45,7 +45,11 @@
 
 <body>
   <div class="container">
+
+
     <%= yield %>
   </div>
 </body>
 </html>
+
+

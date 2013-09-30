@@ -1,16 +1,39 @@
 /*  Animations
 -------------------------------*/
 
-.hippo_success {
+.hippo8 {
+  -webkit-animation: rock-hippo 1s ease-in-out infinite;
+}
+.hippo1 {
   -webkit-animation: rock-hippo 8s ease-in-out infinite;
+}
+
+.hippo2 {
+  -webkit-animation: rock-hippo 7s ease-in-out infinite;
+}
+.hippo3 {
+  -webkit-animation: rock-hippo 6s ease-in-out infinite;
+}
+.hippo4 {
+  -webkit-animation: rock-hippo 5s ease-in-out infinite;
+}
+
+.hippo5 {
+  -webkit-animation: rock-hippo 4s ease-in-out infinite;
+}
+.hippo6 {
+  -webkit-animation: rock-hippo 3s ease-in-out infinite;
+}
+.hippo7 {
+  -webkit-animation: rock-hippo 2s ease-in-out infinite;
 }
 
 
 
 
-  Keyframes
-------------------------------- 
+/*  Keyframes
+------------------------------- */
 
 @-webkit-keyframes rock-hippo {
-  50% {-webkit-transform: rotate(100deg) translateY(100px) translateX(100px); }
+  50% {-webkit-transform: rotate(360deg) translateY(200px) translateX(300px); }
 }

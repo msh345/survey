@@ -10,6 +10,10 @@ html {
   background: black;
 }
 
+.header_links a {
+  text-decoration: none;
+}
+
 .hippo {
   height: 100px;
   position: relative;
@@ -31,7 +35,7 @@ html {
   width: 400px;
 }
 
-li {
+nav li {
   display: inline;
   text-decoration: none;
 
@@ -50,6 +54,23 @@ src: url('/webfonts/cubano-regular-webfont.ttf'),
   width: 750px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+h2 a {
+  font-size: 12px;
+  border-style: solid;
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  border-color: white;
+  color: black;
+  border-radius: 40%;
+
+
 }
 th {
   text-align: left;
@@ -70,4 +91,17 @@ th {
 
 .submit-survey {
   margin: 10px 0 10px 0;
+}
+
+a:hover {
+  color: white;
+}
+
+.dancing_hippos img{
+  height: 100px;
+  display: inline;
+}
+
+.index_hippo img {
+  height: 40px;
 }
