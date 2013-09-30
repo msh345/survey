@@ -29,11 +29,8 @@ end
     if question.question_type == "text"
       QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, answer: Faker::Lorem.words(num = 3, supplemental = false).join(" "))
     else
-      choices = []
-      Question.find(question.id).choices.each do |choice|
-        choices << choice
-      end
-      QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, answer: choices.sample)
+      choices = Question.find(question.id).choices
+      QuestionResponse.create(survey_submission_id: survey_submissions.last.id, question_id: question.id, choice_id: choices.sample.id)
     end
   end
 end
