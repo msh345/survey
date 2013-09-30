@@ -1,7 +1,12 @@
-<div> 
-  <h1>Womp womp, your survey doesn't exist, my friend!</h1>
+<div class="not_found_header"> 
+  <center><h1>Womp womp, your survey doesn't exist, my friend!</h1>
+
+    <div class="hippo_failure">
+      <img src="/images/sad_panda.png"></img></center>
+    </div>
+</div>
 
 <% if !current_user %>
-  <h2>Not registered?  Sign up for a XXXXXX account <a href="/signup"> here!</a></h2> 
+  <center><h2>Not registered?  Sign up for an account <a href="/"> here!</a></h2></center>
   <% end  %>
 </div>
