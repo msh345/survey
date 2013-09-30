@@ -1,45 +1,37 @@
 <h1>Results for "<%= @survey.title %>"</h1>
 
-<% if @survey_submissions.empty? %>
+<% if @survey.survey_submissions.empty? %>
 <p>No one has taken your survey yet</p>
 <p>Maybe you want to send them the <a href="/survey/take/<%= @survey.url %>">link</a>?</p>
 <% else %>
 
-<% mc_questions,text_questions = [],[] %>
-<% @questions.each do |question| %>
-  <% mc_questions << question if question.question_type == "multichoice" %>
-  <% text_questions << question if question.question_type == "text" %>
-<% end %>
-
 <h2>Answers Requiring Text Input</h2>
-<table border="1">
-  <tr>
-    <th>Submission ID</th>
-    <% text_questions.each do |question| %>
-      <th>"<%= question.title %>"</th>
-    <% end %>
-  </tr>
-    <% @survey_submissions.each do |survey_submission| %>
-      <tr>
-        <td><%= survey_submission.id %></td>
-        <% survey_submission.question_responses.each do |question_response| %>
-        <td><%= question_response.answer %></td>
+  <% @text_questions.each do |question| %>
+    <div>
+      <%= question.title %>
+      <ul>
+        <% question.question_responses.each do |response| %>
+          <li><%= response.survey_submission.id %>: <%= response.answer %></li>
         <% end %>
-      </tr>
-    <% end %>
-</table><br>
+        </ul>
+    </div>
+  <% end %>
+
+
 <h2>Multiple Choice Answers</h2>
-<table border="1">
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+  <% @mc_questions.each do |question| %>
+        <div>
+      <%= question.title %>
+      <ul>
+        <% question.question_responses.each do |response| %>
+          <% if response.answer == nil %>
+            <li><%= response.survey_submission.id %>: <%= response.choice.title %></li>
+          <% else %>
+            <li><%= response.survey_submission.id %>: <%= Choice.find(response.answer).title %></li>
+          <% end %>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
 
 <% end %>

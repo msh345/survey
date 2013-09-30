@@ -10,8 +10,16 @@ end
 
 get '/survey/results/:hash' do
   @survey = Survey.find_by_url(params[:hash])
-  @questions = @survey.questions
-  @survey_submissions = @survey.survey_submissions
+  @mc_questions = []
+  @text_questions = []
+  
+  @survey.questions.each do |question|
+    @mc_questions << question if question.question_type == "multichoice"
+    @text_questions << question if question.question_type == "text"
+  end
+
+  # @survey_submissions = @survey.survey_submissions
+
   if @survey
     erb :survey_results 
   else 
@@ -51,9 +59,9 @@ post '/survey/create' do
 
   mc_questions.each do |question,answers|
     mc_answers = mc_questions["#{question}"][:answer]
+    survey_questions = survey.questions << Question.create(title: question, question_type: "multichoice")
+    last_question = survey_questions.last
     mc_answers.each do |answer|
-      survey_questions = survey.questions << Question.create(title: question, question_type: "multichoice")
-      last_question = survey_questions.last
       last_question.choices << Choice.create(title: answer)
     end
   end
@@ -62,7 +70,6 @@ post '/survey/create' do
 end 
 
 post '/survey/submit' do
-  #take answers and save to db 
   @survey = Survey.find(params[:survey])
   @responses = params[:response]
   if current_user
@@ -72,7 +79,12 @@ post '/survey/submit' do
   end
 
   @responses.each do |question,response| #["100", "do"]
-    QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, answer: response)
+    q = Question.find(question)
+    if q.question_type == "text"
+      QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, answer: response)
+    elsif q.question_type == "multichoice"
+      QuestionResponse.create(survey_submission_id: @survey_submission.id, question_id: question, choice_id: response)
+    end
   end 
 
   if current_user
